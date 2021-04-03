@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="static/style-index.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="input">
+<form action="{{ url_for('predict') }}" method="post">
+    <div>
+        pregnancies
+        <input type="text" name="pregnancies" placeholder="" required="required">
+    </div>
+    <div>
+        glucose
+        <input type="text" name="glucose" placeholder="" required="required">
+    </div>
+    <div>
+        blood_pressure
+        <input type="text" name="blood_pressure" placeholder="" required="required">
+    </div>
+    <div>
+        skin_thickness
+        <input type="text" name="skin_thickness" placeholder="" required="required">
+    </div>
+    <div>
+        insulin
+        <input type="text" name="insulin" placeholder="" required="required">
+    </div>
+    <div>
+        bmi
+        <input type="text" name="bmi" placeholder="" required="required">
+    </div>
+    <div>
+        diabetes_pedigree_function
+        <input type="text" name="diabetes_pedigree_function" placeholder="" required="required">
+    </div>
+    <div>
+        age
+        <input type="text" name="age" placeholder="" required="required">
+    </div>
+    <button type="submit" class="btn">Predict</button>
+</form>
+
+<br><br>
+{{ prediction_text }}
+</div>
+</body>
+</html>

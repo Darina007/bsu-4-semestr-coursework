@@ -1,0 +1,8 @@
+.input{
+    position: fixed;
+    border-bottom-width: 10px;
+    border-bottom: black;
+    align-content: center;
+    text-align: center;
+    font-size: 20px;
+}
