@@ -1,0 +1,83 @@
+.header {
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    background: #684AA2;
+}
+
+.buttons {
+    width: 30%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+.buttons button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    font-size: x-large;
+    padding: 0;
+    margin: 0;
+}
+
+.info {
+    padding: 5px 5px 0 5px;
+    right: 5%;
+    font-size: xx-large;
+    align-content: center;
+}
+
+.main {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    background: #FBF5CB;
+}
+
+.data {
+    position: fixed;
+    left: 10%;
+    width: 80%;
+    height: 100%;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-content: center;
+    font-size: 300%;
+    text-align: center;
+    background: #FBEF9D;
+}
+
+.hello {
+    margin: 3%;
+    color: black;
+    text-align: center;
+}
+
+.hello-text {
+    margin: 1% 5% 1% 5%;
+    color: black;
+}
+
+
+.predict-button {
+    width: 20%;
+    height: 15%;
+    flex: 0 1 auto;
+    margin: 5%;
+    text-align: center;
+    font-size: xxx-large;
+    border-radius: 30px;
+    background: #614A8D;
+    color: white;
+}

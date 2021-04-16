@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style-index1.css">
+    <title>Home</title>
+</head>
+<body>
+<header class="header">
+    <div class="buttons">
+        <button name="home">Home</button>
+        <button name="prediction">Prediction</button>
+        <button name="graphics">Graphics</button>
+    </div>
+    <div class="info">
+        Created by:
+    </div>
+</header>
+<main class="main">
+    <div class="data">
+        <div class="hello">Hello!</div>
+        <div class="hello-text">With this site you can get a prediction of whether you have diabetes.</div>
+        <form action="{{ url_for('prediction') }}" method="post">
+            <button class="predict-button" >Predict</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

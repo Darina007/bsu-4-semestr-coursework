@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style-graphics.css">
+    <title>Home</title>
+    {{ js_resources|indent(4)|safe }}
+    {{ css_resources|indent(4)|safe }}
+    {{ plot_script|indent(4)|safe }}
+    {{ plot_script1|indent(4)|safe }}
+</head>
+<body>
+<header class="header">
+    <div class="buttons">
+        <button name="home">Home</button>
+        <button name="prediction">Prediction</button>
+        <button name="graphics">Graphics</button>
+    </div>
+    <div class="info">
+        Created by:
+    </div>
+</header>
+<main class="main">
+    <div class="data">
+        <div class="plot_info">
+            Diabetes?
+            <div class="plot_diabetes">
+                <div class="plot">
+                    {{ plot_div|indent(4)|safe }}
+                </div>
+                <div class="plot">
+                    {{ plot_div1|indent(4)|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
