@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/base.css">
+    {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+    {% endblock head %}
+</head>
+<body>
+<header class="header">
+    <div class="buttons">
+        <button name="home">Home</button>
+        <button name="prediction">Prediction</button>
+        <button name="graphics">Graphics</button>
+    </div>
+    <div class="info">
+        Created by: Skovysh Darina
+    </div>
+</header>
+<main class="main">
+    <div class="data">
+        {% block content %} {% endblock %}
+    </div>
+</main>
+</body>
+</html>

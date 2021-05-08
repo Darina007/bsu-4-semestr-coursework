@@ -1,0 +1,46 @@
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.data {
+    overflow: scroll;
+    display: flex;
+    flex: 1 1 auto;
+    padding-bottom: 5%;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    font-size: 250%;
+    background-size: cover;
+}
+
+.plot_info {
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+    width: 70%;
+    flex: 1 1 auto;
+}
+
+.plot_diabetes {
+    display: flex;
+    flex: 1 1 auto;
+    left: 10%;
+    width: 80%;
+    margin: 2%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.histogram {
+    display: flex;
+    flex: 1 1 auto;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+.plot {
+    margin: 2%;
+}

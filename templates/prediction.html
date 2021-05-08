@@ -1,16 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form action="{{ url_for('predict') }}" method="post">
+{% extends 'base.html' %}
+{% block title %}Prediction{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="../static/prediction.css">
+{% endblock head %}
+{% block content %}
+    <div class="text">Enter data to predict</div>
+    <form action="{{ url_for('predict') }}" method="post" class="input-field">
+        <div class="input-parameters">
+            <input type="text" name="pregnancies" placeholder="Pregnancies" required="required">
+        </div>
+        <div class="input-parameters">
+            <input type="text" name="glucose" placeholder="Glucose" required="required">
+        </div>
+        <div class="input-parameters">
+            <input type="text" name="blood_pressure" placeholder="Blood pressure" required="required">
+        </div>
+        <div class="input-parameters">
+            <input type="text" name="skin_thickness" placeholder="Skin thickness" required="required">
+        </div>
+        <div class="input-parameters">
+            <input type="text" name="insulin" placeholder="Insulin" required="required">
+        </div>
+        <div class="input-parameters">
+            <input type="text" name="bmi" placeholder="BMI" required="required">
+        </div>
+        <div class="input-parameters">
+            <input type="text" name="diabetes_pedigree_function" placeholder="Diabetes pedigree function"
+                   required="required">
+        </div>
+        <div class="input-parameters">
+            <input type="text" name="age" placeholder="Age" required="required">
+        </div>
+        <div class="output">
+            {{ prediction_text }}
+        </div>
+        <div class="buttons-data">
+            <button type="submit" class="predict" name="predict" value="predict">Predict</button>
+            <button type="submit" class="portray" name="portray" value="portray">Portray</button>
+        </div>
     </form>
-<br><br>
-{{ prediction_text }}
-</div>
-</body>
-</html>
-
-
+{% endblock %}

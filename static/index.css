@@ -1,0 +1,22 @@
+.hello {
+    margin: 3%;
+    color: black;
+    text-align: center;
+}
+
+.hello-text {
+    margin: 1% 5% 1% 5%;
+    color: black;
+}
+
+.predict-button {
+    width: 20%;
+    height: 15%;
+    flex: 0 1 auto;
+    margin: 5%;
+    text-align: center;
+    font-size: xxx-large;
+    border-radius: 30px;
+    background: #614A8D;
+    color: white;
+}

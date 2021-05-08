@@ -1,39 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/style-graphics.css">
-    <title>Home</title>
+{% extends 'base.html' %}
+{% block title %}Graphics{% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="../static/graphics.css">
     {{ js_resources|indent(4)|safe }}
     {{ css_resources|indent(4)|safe }}
-    {{ plot_script|indent(4)|safe }}
-    {{ plot_script1|indent(4)|safe }}
-</head>
-<body>
-<header class="header">
-    <div class="buttons">
-        <button name="home">Home</button>
-        <button name="prediction">Prediction</button>
-        <button name="graphics">Graphics</button>
-    </div>
-    <div class="info">
-        Created by:
-    </div>
-</header>
-<main class="main">
-    <div class="data">
-        <div class="plot_info">
-            Diabetes?
-            <div class="plot_diabetes">
+    {% for i in plot_script %}
+        {{ i|indent(4)|safe }}
+    {% endfor %}
+    {% for i in plot_script_diabetes %}
+        {{ i|indent(4)|safe }}
+    {% endfor %}
+{% endblock head %}
+{% block content %}
+    {% if result %}
+        <div class="output">
+            {% if result == 1 %}
+                Presumably the test for diabetes will be positive
+            {% else %}
+                Presumably the test for diabetes will be negative
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="plot_info">
+        Diabetes?
+        <div class="plot_diabetes">
+            {% for i in plot_div_diabetes %}
                 <div class="plot">
-                    {{ plot_div|indent(4)|safe }}
+                    {{ i|indent(4)|safe }}
                 </div>
-                <div class="plot">
-                    {{ plot_div1|indent(4)|safe }}
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
-</main>
-</body>
-</html>
+    <div class="histogram">
+        {% for i in plot_div %}
+            <div class="plot">
+                {{ i|indent(4)|safe }}
+            </div>
+        {% endfor %}
+    </div>
+    {% if final_features %}
+    {% endif %}
+{% endblock %}

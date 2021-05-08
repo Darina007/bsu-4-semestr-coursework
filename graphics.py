@@ -1,5 +1,6 @@
 from math import pi
 
+import numpy as np
 import pandas as pd
 from bokeh.models import ColumnDataSource
 from bokeh.palettes import Spectral6
@@ -24,7 +25,6 @@ def is_diabetes_wedge():
             line_color="white", fill_color='color', legend_field='count', source=data)
     p.axis.axis_label = None
     p.axis.visible = False
-
     return p
 
 
@@ -37,4 +37,28 @@ def is_diabetes_bar():
            line_color='white', fill_color=factor_cmap('data', palette=Spectral6, factors=data))
     return p
 
+
 # def heatmap():
+
+
+def histogram():
+    mass = [np.histogram(df.Pregnancies, density=True, bins=50), np.histogram(df.Glucose, density=True, bins=50),
+            np.histogram(df.BloodPressure, density=True, bins=50),
+            np.histogram(df.SkinThickness, density=True, bins=50), np.histogram(df.Insulin, density=True, bins=50),
+            np.histogram(df.BMI, density=True, bins=50),
+            np.histogram(df.DiabetesPedigreeFunction, density=True, bins=50),
+            np.histogram(df.Age, density=True, bins=50)]
+    p = []
+    titles = ['Pregnancies', 'Glucose', 'Blood Pressure', 'Skin Thickness', 'Insulin', 'BMI',
+              'Diabetes Pedigree Function', 'Age']
+    for i in range(7):
+        p.append(
+            figure(title=titles[i], plot_height=300, plot_width=300, toolbar_location='below'))
+        p[i].title.align = 'center'
+        p[i].quad(top=mass[i][0], bottom=0, left=mass[i][1][:-1], right=mass[i][1][1:],
+                  line_color="white")
+        #x = np.linspace([i][1][:-1])
+        #pdf = 1 / (x * sigma * np.sqrt(2 * np.pi)) * np.exp(-(np.log(x)) ** 2 / (2 * sigma ** 2))
+        #p[i].line(x, pdf, line_color="#ff8888", line_width=4, alpha=0.7, legend_label="PDF")
+        #p[i].select(1, color="red")
+    return p
