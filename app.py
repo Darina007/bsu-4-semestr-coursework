@@ -8,7 +8,6 @@ from graphics import is_diabetes_wedge, is_diabetes_bar, histogram
 app = Flask(__name__)
 model = joblib.load(open('model/classifier.pkl', 'rb'))
 
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -34,30 +33,41 @@ def predict():
     if type_button == 'predict':
         return render_template('prediction.html', prediction_text=result_text)
     elif type_button == 'portray':
-        return portray()
+        return portray(output)
 
 
 @app.route('/portray', methods=['POST'])
-def portray(final_features=None, result=None):
+def portray(result=None):
     mass_plots_diabetes = []
-    if final_features is None and result is None:
-        mass_plots_diabetes.append(is_diabetes_wedge())
-        mass_plots_diabetes.append(is_diabetes_bar())
-        p = histogram()
-        scripts = []
-        div = []
-        for i in range(len(p)):
-            scripts.append(0)
-            div.append(0)
-            scripts[i], div[i] = components(p[i])
-        scripts_diabetes = []
-        div_diabetes = []
-        for i in range(len(mass_plots_diabetes)):
-            scripts_diabetes.append(0)
-            div_diabetes.append(0)
-            scripts_diabetes[i], div_diabetes[i] = components(mass_plots_diabetes[i])
+    mass_plots_diabetes.append(is_diabetes_wedge())
+    mass_plots_diabetes.append(is_diabetes_bar())
+    p = histogram()
+    scripts = []
+    div = []
+    for i in range(len(p)):
+        scripts.append(0)
+        div.append(0)
+        scripts[i], div[i] = components(p[i])
+    scripts_diabetes = []
+    div_diabetes = []
+    for i in range(len(mass_plots_diabetes)):
+        scripts_diabetes.append(0)
+        div_diabetes.append(0)
+        scripts_diabetes[i], div_diabetes[i] = components(mass_plots_diabetes[i])
+    if result is None:
         return render_template(
             'graphics.html',
+            plot_script_diabetes=scripts_diabetes,
+            plot_script=scripts,
+            plot_div_diabetes=div_diabetes,
+            plot_div=div,
+            js_resources=INLINE.render_js(),
+            css_resources=INLINE.render_css(),
+        ).encode(encoding='UTF-8')
+    else:
+        return render_template(
+            'graphics.html',
+            result=result,
             plot_script_diabetes=scripts_diabetes,
             plot_script=scripts,
             plot_div_diabetes=div_diabetes,

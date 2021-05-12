@@ -1,5 +1,4 @@
 from math import pi
-
 import numpy as np
 import pandas as pd
 from bokeh.models import ColumnDataSource
@@ -10,7 +9,6 @@ from bokeh.transform import cumsum, factor_cmap
 df = pd.read_csv('../coursework/model/diabetes.csv')
 count_1 = len(df[df['Outcome'] == 1])
 count_0 = len(df[df['Outcome'] == 0])
-
 
 def is_diabetes_wedge():
     x = {'yes': count_1, 'no': count_0}
@@ -27,7 +25,6 @@ def is_diabetes_wedge():
     p.axis.visible = False
     return p
 
-
 def is_diabetes_bar():
     data = ['yes', 'no']
     count = [count_1, count_0]
@@ -37,9 +34,7 @@ def is_diabetes_bar():
            line_color='white', fill_color=factor_cmap('data', palette=Spectral6, factors=data))
     return p
 
-
 # def heatmap():
-
 
 def histogram():
     mass = [np.histogram(df.Pregnancies, density=True, bins=50), np.histogram(df.Glucose, density=True, bins=50),
@@ -57,8 +52,4 @@ def histogram():
         p[i].title.align = 'center'
         p[i].quad(top=mass[i][0], bottom=0, left=mass[i][1][:-1], right=mass[i][1][1:],
                   line_color="white")
-        #x = np.linspace([i][1][:-1])
-        #pdf = 1 / (x * sigma * np.sqrt(2 * np.pi)) * np.exp(-(np.log(x)) ** 2 / (2 * sigma ** 2))
-        #p[i].line(x, pdf, line_color="#ff8888", line_width=4, alpha=0.7, legend_label="PDF")
-        #p[i].select(1, color="red")
     return p

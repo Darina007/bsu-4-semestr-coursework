@@ -2,6 +2,7 @@
 {% block title %}Graphics{% endblock title %}
 {% block head %}
     <link rel="stylesheet" href="../static/graphics.css">
+    <script type="text/javascript" src="https://kozea.github.io/pygal.js/2.0.x/pygal-tooltips.min.js"></script>
     {{ js_resources|indent(4)|safe }}
     {{ css_resources|indent(4)|safe }}
     {% for i in plot_script %}
@@ -38,6 +39,4 @@
             </div>
         {% endfor %}
     </div>
-    {% if final_features %}
-    {% endif %}
 {% endblock %}
